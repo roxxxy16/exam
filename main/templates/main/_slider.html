@@ -1,0 +1,33 @@
+{% comment %}Слайдер: 4 одинаковых картинки, авто-смена каждые 3 сек, стрелки вперёд/назад.{% endcomment %}
+<div id="voditSlider" class="carousel slide vodit-slider fade-in" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#voditSlider" data-bs-slide-to="0" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#voditSlider" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#voditSlider" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#voditSlider" data-bs-slide-to="3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=1200&h=560&fit=crop" alt="Катер">
+      <div class="carousel-caption d-none d-md-block"><h5>Катера</h5><p>Маневренное вождение по реке</p></div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=1200&h=560&fit=crop" alt="Яхта">
+      <div class="carousel-caption d-none d-md-block"><h5>Яхты</h5><p>Управление парусными и моторными</p></div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1200&h=560&fit=crop" alt="Круизный лайнер">
+      <div class="carousel-caption d-none d-md-block"><h5>Круизные лайнеры</h5><p>Дальние речные походы</p></div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1500627964684-141351970a7f?w=1200&h=560&fit=crop" alt="Обучение">
+      <div class="carousel-caption d-none d-md-block"><h5>Опытные инструкторы</h5><p>Практика на воде с первого дня</p></div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#voditSlider" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span><span class="visually-hidden">Назад</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#voditSlider" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span><span class="visually-hidden">Вперёд</span>
+  </button>
+</div>

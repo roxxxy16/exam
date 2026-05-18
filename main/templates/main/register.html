@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Регистрация — Водить.РФ{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-6">
+    <div class="card fade-in"><div class="card-body p-4">
+      <h3 class="mb-3"><i class="bi bi-person-plus"></i> Регистрация</h3>
+      <p class="text-muted small">Заполните все поля — после успешной валидации мы создадим ваш аккаунт.</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="mb-3">
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+            {% if field.errors %}
+              <div class="text-danger small mt-1">{{ field.errors|join:" " }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary w-100"><i class="bi bi-check2-circle"></i> Зарегистрироваться</button>
+      </form>
+
+      <hr class="my-4">
+      <div class="text-center">
+        <a href="{% url 'login' %}" class="text-decoration-none">Уже есть аккаунт? Войти</a>
+      </div>
+    </div></div>
+  </div>
+</div>
+{% endblock %}
