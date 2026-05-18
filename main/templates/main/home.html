@@ -7,9 +7,9 @@
   <h1 class="mb-3">Обучение вождению речного транспорта</h1>
   <p class="lead mb-4">Катера · Яхты · Круизные лайнеры — очные курсы с опытными инструкторами</p>
   {% if user.is_authenticated %}
-    <a href="{% url 'apply' %}" class="btn btn-light btn-lg"><i class="bi bi-pencil-square"></i> Подать заявку</a>
+    <a href="{% url 'apply' %}" class="btn btn-light btn-lg">Подать заявку</a>
   {% else %}
-    <a href="{% url 'register' %}" class="btn btn-light btn-lg me-2"><i class="bi bi-person-plus"></i> Регистрация</a>
+    <a href="{% url 'register' %}" class="btn btn-light btn-lg me-2">Регистрация</a>
     <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">Вход</a>
   {% endif %}
 </section>
@@ -18,17 +18,17 @@
 
 <div class="row g-3 mt-3">
   <div class="col-md-4"><div class="card h-100 fade-in"><div class="card-body text-center">
-    <i class="bi bi-water display-5 text-primary"></i>
+    <img src="{% static 'img/logo.png' %}" alt="" class="card-icon">
     <h3 class="mt-2">Катера</h3>
     <p class="text-muted mb-0">Базовый курс вождения моторных катеров на реке.</p>
   </div></div></div>
   <div class="col-md-4"><div class="card h-100 fade-in"><div class="card-body text-center">
-    <i class="bi bi-wind display-5 text-success"></i>
+    <img src="{% static 'img/boat-alt.png' %}" alt="" class="card-icon">
     <h3 class="mt-2">Яхты</h3>
     <p class="text-muted mb-0">Управление парусными и моторными яхтами.</p>
   </div></div></div>
   <div class="col-md-4"><div class="card h-100 fade-in"><div class="card-body text-center">
-    <i class="bi bi-buildings display-5" style="color: var(--vd-turquoise);"></i>
+    <img src="{% static 'img/logo.png' %}" alt="" class="card-icon">
     <h3 class="mt-2">Круизные лайнеры</h3>
     <p class="text-muted mb-0">Большие суда для дальних речных маршрутов.</p>
   </div></div></div>
@@ -37,13 +37,13 @@
 <div class="contact-card mt-4 fade-in">
   <div class="row align-items-center g-3">
     <div class="col-md-8">
-      <h2 class="mb-2"><i class="bi bi-geo-alt"></i> Наше местонахождение</h2>
+      <h2 class="mb-2">Наше местонахождение</h2>
       <p class="mb-1">Адрес головного офиса: <strong>г. Москва, ул. Большая Ордынка, д. 15</strong></p>
       <p class="mb-1">Телефон горячей линии: <a href="tel:+74951234567"><strong>+7 (495) 123-45-67</strong></a></p>
       <p class="mb-0" style="font-weight: 300;">Если возникли вопросы или пожелания, позвоните нам — ответим оперативно и подробно.</p>
     </div>
     <div class="col-md-4 text-center">
-      <i class="bi bi-telephone-fill" style="font-size: 4rem;"></i>
+      <img src="{% static 'img/boat-alt.png' %}" alt="" style="max-width: 120px; filter: brightness(0) invert(1);">
     </div>
   </div>
 </div>

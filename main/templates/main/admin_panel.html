@@ -3,7 +3,7 @@
 {% block title %}Панель администратора — Водить.РФ{% endblock %}
 
 {% block content %}
-<h3 class="mb-3"><i class="bi bi-speedometer2"></i> Панель администратора</h3>
+<h2 class="mb-3">Панель администратора</h2>
 
 <form method="get" class="card card-body mb-3 fade-in">
   <div class="row g-2 align-items-end">
@@ -41,7 +41,7 @@
       </select>
     </div>
     <div class="col-md-2 d-grid">
-      <button class="btn btn-sm btn-primary"><i class="bi bi-funnel"></i> Применить</button>
+      <button class="btn btn-sm btn-primary">Применить</button>
     </div>
   </div>
 </form>
@@ -72,7 +72,7 @@
                   <option value="{{ v }}" {% if app.status == v %}selected{% endif %}>{{ label }}</option>
                 {% endfor %}
               </select>
-              <button class="btn btn-sm btn-outline-primary"><i class="bi bi-check2"></i></button>
+              <button class="btn btn-sm btn-outline-primary">✓</button>
             </form>
           </td>
         </tr>
