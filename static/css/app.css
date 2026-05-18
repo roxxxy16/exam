@@ -169,3 +169,21 @@ a:hover { color: #0064d1; }
 }
 
 .btn-light.btn-sm { font-weight: 500; }
+
+/* ----------- Соц. сети ----------- */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.social-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.social-icon i { display: none; }
+.social-icon svg { display: block; }
+.social-links { font-size: 12px; }

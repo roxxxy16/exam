@@ -39,6 +39,7 @@ class RegistrationForm(forms.Form):
     birth_date = forms.DateField(
         label='Дата рождения',
         widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        help_text='Формат: ДД.ММ.ГГГГ',
     )
     phone = forms.CharField(
         label='Контактный телефон',
@@ -118,6 +119,9 @@ class ApplicationForm(forms.ModelForm):
             'transport_type': 'Вид транспорта',
             'start_date': 'Дата начала обучения',
             'payment_method': 'Способ оплаты',
+        }
+        help_texts = {
+            'start_date': 'Формат: ДД.ММ.ГГГГ',
         }
 
     def clean_start_date(self):
