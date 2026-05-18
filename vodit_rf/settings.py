@@ -53,29 +53,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vodit_rf.wsgi.application'
 
-
-# Database — PostgreSQL
-# Для локального запуска можно временно переключить на SQLite,
-# раскомментировав блок ниже.
-# PostgreSQL (основная конфигурация — для экзамена)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'vodit_rf',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-# SQLite для локальной разработки / быстрого старта
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vodit_rf',
+        'USER': 'postgres',
+        'PASSWORD': 'admin16',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# SQLite для локальной разработки / быстрого старта
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [

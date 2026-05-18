@@ -27,9 +27,9 @@ class Application(models.Model):
     ]
 
     PAYMENT_CHOICES = [
-        ('card', 'Банковская карта'),
-        ('cash', 'Наличные'),
-        ('transfer', 'Безналичный перевод'),
+        ('qr', 'Предоплата по QR-коду'),
+        ('mir', 'Оплата картой МИР'),
+        ('office', 'Постоплата в офисе организации'),
     ]
 
     STATUS_NEW = 'new'

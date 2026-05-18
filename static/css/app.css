@@ -1,16 +1,85 @@
-/* Базовая палитра под «Водить.РФ» — речная гамма */
-:root {
-  --vd-primary: #0d6efd;
-  --vd-accent:  #20c997;
-  --vd-dark:    #0a2540;
-  --vd-soft:    #f4f8fb;
+/* ==============================================
+   Водить.РФ — стили по руководству Модуля 3
+   Палитра + шрифт Rubik
+   ============================================== */
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/rubik/Rubik-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/rubik/Rubik-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/rubik/Rubik-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/rubik/Rubik-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-body {
-  background: var(--vd-soft);
-  font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-  color: #1e2a3a;
+:root {
+  /* Палитра из руководства по стилю */
+  --vd-primary:   #007BFF;  /* глубокий морской синий */
+  --vd-turquoise: #4CCFE0;  /* ясно-бирюзовый */
+  --vd-white:     #FFFFFF;
+  --vd-green:     #28A745;  /* лесной зелёный */
+  --vd-grey:      #6C757D;  /* металлический серый */
+
+  --bs-primary: var(--vd-primary);
+  --bs-primary-rgb: 0, 123, 255;
 }
+
+/* Базовые типографические правила из руководства */
+html { font-size: 16px; }
+body {
+  font-family: 'Rubik', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1e2a3a;
+  background: #f4f8fb;
+}
+h1 { font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 36px; }
+h2 { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 24px; }
+h3 { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 18px; }
+h4, h5, h6 { font-family: 'Rubik', sans-serif; font-weight: 500; }
+.small, small, .form-text { font-weight: 300; font-size: 12px; }
+
+/* Bootstrap primary → морской синий */
+.bg-primary { background-color: var(--vd-primary) !important; }
+.btn-primary {
+  background-color: var(--vd-primary);
+  border-color: var(--vd-primary);
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #0064d1;
+  border-color: #0064d1;
+}
+.text-primary { color: var(--vd-primary) !important; }
+.btn-outline-primary { color: var(--vd-primary); border-color: var(--vd-primary); }
+.btn-outline-primary:hover { background: var(--vd-primary); color: #fff; }
+.btn-success {
+  background-color: var(--vd-green);
+  border-color: var(--vd-green);
+}
+.text-success { color: var(--vd-green) !important; }
+
+a { color: var(--vd-primary); }
+a:hover { color: #0064d1; }
 
 /* ----------- Микроанимации ----------- */
 @keyframes fadeInUp {
@@ -19,16 +88,17 @@ body {
 }
 .fade-in { animation: fadeInUp 0.35s ease-out both; }
 
-.btn { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.btn { transition: transform 0.15s ease, box-shadow 0.15s ease; border-radius: 0.5rem; font-weight: 500; }
 .btn:hover:not(:disabled) { transform: translateY(-1px); }
 
 .card {
   border: none;
   border-radius: 0.85rem;
-  box-shadow: 0 2px 14px rgba(13, 110, 253, 0.06);
+  background: var(--vd-white);
+  box-shadow: 0 2px 14px rgba(0, 123, 255, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.card:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(13, 110, 253, 0.10); }
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0, 123, 255, 0.10); }
 
 .form-control, .form-select {
   border-radius: 0.6rem;
@@ -36,48 +106,66 @@ body {
 }
 .form-control:focus, .form-select:focus {
   border-color: var(--vd-primary);
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.18);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.18);
 }
 
 /* ----------- Hero / лендинг ----------- */
 .hero {
-  background: linear-gradient(135deg, #0d6efd 0%, #20c997 100%);
+  background: linear-gradient(135deg, var(--vd-primary) 0%, var(--vd-turquoise) 100%);
   color: #fff;
   border-radius: 1.2rem;
   padding: 3rem 1.25rem;
   margin-bottom: 1.5rem;
 }
 .hero h1 { font-weight: 700; }
-.hero .badge { background: rgba(255,255,255,0.18); }
+.hero .badge { background: rgba(255,255,255,0.18); font-weight: 400; }
+
+.brand-logo { height: 36px; width: auto; vertical-align: middle; margin-right: 0.5rem; }
 
 /* ----------- Слайдер ----------- */
 .vodit-slider {
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(13, 110, 253, 0.10);
+  box-shadow: 0 4px 18px rgba(0, 123, 255, 0.10);
 }
 .vodit-slider .carousel-item img {
   width: 100%;
-  height: 280px;
+  height: 320px;
   object-fit: cover;
+}
+.vodit-slider .carousel-caption {
+  background: rgba(0, 123, 255, 0.55);
+  border-radius: 0.7rem;
+  padding: 0.6rem 1rem;
+  bottom: 1.2rem;
 }
 
 /* ----------- Статусы заявок ----------- */
-.status-pill { font-size: 0.75rem; font-weight: 600; padding: 0.35em 0.7em; border-radius: 999px; }
+.status-pill { font-size: 0.75rem; font-weight: 500; padding: 0.35em 0.7em; border-radius: 999px; }
 .status-new          { background: #fff3cd; color: #664d03; }
 .status-in_progress  { background: #cfe2ff; color: #084298; }
 .status-done         { background: #d1e7dd; color: #0f5132; }
 
+/* ----------- Контактная секция ----------- */
+.contact-card {
+  background: linear-gradient(135deg, var(--vd-turquoise) 0%, var(--vd-primary) 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.contact-card a { color: #fff; text-decoration: underline; }
+
 /* ----------- Мобильная адаптация под 390x844 ----------- */
 @media (max-width: 480px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 20px; }
   .hero { padding: 2rem 1rem; }
-  .hero h1 { font-size: 1.6rem; }
-  .vodit-slider .carousel-item img { height: 200px; }
+  .vodit-slider .carousel-item img { height: 220px; }
   .card-body { padding: 1rem; }
   .navbar-brand { font-size: 1.05rem; }
   main.container { padding-left: 0.75rem; padding-right: 0.75rem; }
   .table-responsive { font-size: 0.9rem; }
+  .brand-logo { height: 28px; }
 }
 
-/* ----------- Кнопка Выйти под темный навбар ----------- */
 .btn-light.btn-sm { font-weight: 500; }
