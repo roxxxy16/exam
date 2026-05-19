@@ -1,43 +1,89 @@
-# Водить.РФ — портал записи на курсы вождения речного транспорта
+# Создание базы данных
 
-Информационная система демо-экзамена 09.02.07 (вариант В1).
-Стек: **Python 3 · Django · PostgreSQL (psycopg2-binary) · HTML/CSS · Bootstrap 5**.
+## Вариант А — PostgreSQL через psql (основной)
 
-## Функционал
+Открой `cmd` и выполни:
 
-- Регистрация пользователя с валидацией (логин — латиница и цифры, ≥6 символов; пароль ≥8).
-- Авторизация с информативными сообщениями об ошибках.
-- Личный кабинет: история заявок + отзывы (после смены статуса администратором).
-- Оформление заявки: вид транспорта, дата начала, способ оплаты — через выпадающие списки.
-- Панель администратора (логин `Admin26` / пароль `Demo20`) с фильтрами, поиском,
-  сортировкой и постраничной навигацией.
-- Слайдер с 4 изображениями, авто-смена каждые 3 секунды, стрелки вперёд/назад.
-- Мобильная адаптация под 390×844, микроанимации.
-
-## Запуск
-
-```bash
-pip install -r requirements.txt
-
-# создать БД vodit_rf в PostgreSQL (user: postgres / pass: postgres)
-# или временно переключиться на SQLite в vodit_rf/settings.py
-
-python manage.py migrate
-python manage.py createsuperuser  # для /admin/
-python manage.py runserver
+```cmd
+set PGPASSWORD=твой_пароль_от_postgres
+"C:\postresql\bin\psql.exe" -U postgres -h localhost
 ```
 
-## Создание пользователя-администратора Admin26
+После входа в psql выполни:
 
-```bash
-python manage.py shell
->>> from django.contrib.auth.models import User
->>> User.objects.create_superuser('Admin26', 'admin@vodit.rf', 'Demo20')
+```sql
+CREATE DATABASE vodit_rf;
+\l
+\q
 ```
 
-## Структура
+`\l` покажет список баз — там должна быть `vodit_rf`.
+`\q` — выйти из psql.
 
-- `vodit_rf/` — настройки проекта
-- `main/` — модели (Profile, Application, Review), формы, представления, URL'ы
-- `main/templates/main/` — шаблоны Bootstrap
-- `static/css/app.css` — стили, анимации, мобильная адаптация
+**Одной строкой без входа в psql:**
+
+```cmd
+set PGPASSWORD=твой_пароль
+"C:\postresql\bin\psql.exe" -U postgres -h localhost -c "CREATE DATABASE vodit_rf;"
+```
+
+Затем в `vodit_rf/settings.py` укажи свой пароль в блоке `DATABASES`:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vodit_rf',
+        'USER': 'postgres',
+        'PASSWORD': 'твой_пароль',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+---
+
+## Вариант Б — MySQL через XAMPP / phpMyAdmin (запасной)
+
+1. Запусти **XAMPP Control Panel** → нажми **Start** напротив **Apache** и **MySQL**.
+2. Открой в браузере: <http://localhost/phpmyadmin>
+3. Слева нажми **Создать БД (New)** → введи имя `vodit_rf` → кодировка `utf8mb4_general_ci` → кнопка **Create**.
+
+Установи драйвер MySQL:
+
+```bash
+pip install mysqlclient
+```
+
+Если `mysqlclient` не ставится — поставь `PyMySQL`:
+
+```bash
+pip install pymysql
+```
+
+И в самом верху файла `vodit_rf/__init__.py` добавь:
+
+```python
+import pymysql
+pymysql.install_as_MySQLdb()
+```
+
+Затем в `vodit_rf/settings.py` замени блок `DATABASES` на:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vodit_rf',
+        'USER': 'root',
+        'PASSWORD': '',          # в XAMPP по умолчанию пароля нет
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
+}
+```
